@@ -26,11 +26,12 @@ CUSTOM - 31 <- 4
 */
 #include<iostream>
 #include<climits>
+#include<bits/stdc++.h>
 using namespace std;
 
 int N, result;
 
-void minCostMrLee(int **arr, bool *visited, int count, int cost, int src){
+void minCostMrLee(vector<vector<int>> arr, vector<bool> visited, int count, int cost, int src){
     // Base Case
     if(count == N-1){
     	/* Corner Case if no path exists from last city */
@@ -54,11 +55,8 @@ int main(){
 	cin >> t;
 	while(t--){
 		cin >> N;
-		int **arr = new int*[N];
-		for(int i=0; i<N; i++){
-			arr[i] = new int[N];
-		}
-        bool *visited = new bool[N];
+		vector<vector<int>> arr(N,vector<int>(N));
+        vector<bool> visited(N);
 		
         for(int i=0; i<N; i++){
             visited[i] = false;
