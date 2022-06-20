@@ -1,18 +1,15 @@
 #include <iostream>
 #include <climits>
+#include<bits/stdc++.h>
 using namespace std;
 
 int ANS = INT_MAX, n, temp = 0;
 int w[35][5];
 int mask[35];
 
-int abs(int i){
-    return (i>=0) ? i : -1*i;
-}
 
-int min(int x, int y){
-    return (x>=y) ? y : x;
-}
+
+
 
 int dist(int sX, int sY, int tX, int tY){
     return abs(sX-tX) + abs(sY-tY);
