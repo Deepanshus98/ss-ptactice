@@ -47,8 +47,8 @@ void bfs(int x,int y){
                 q.push(nn);
             }
         }
-    }/*
-}
+    }
+
 
 int main()
 {
