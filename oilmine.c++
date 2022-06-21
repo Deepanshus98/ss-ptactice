@@ -42,15 +42,15 @@ int main() {
 		vector<int> visited(mines + 1);
 
 		for(int i=0; i<mines; i++){
-            cin >> oilMines[i];
-            visited[i] = 0;
+		    cin >> oilMines[i];
+		    visited[i] = 0;
         }
 			
         ANS = INT_MAX;    
         for(int i=0; i<mines; i++)
             calculateOilMines(i, oilMines, visited, INT_MAX, INT_MIN, 0, 0, ANS);  
 
-		cout << ANS <<endl;		
+	cout << ANS <<endl;		
 	}
 	return 0;
 }
