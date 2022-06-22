@@ -1,4 +1,4 @@
-You want to cut a piece of paper by a certain fixed rule to make some pieces of white or 
+/*You want to cut a piece of paper by a certain fixed rule to make some pieces of white or 
 blue colored square paper with various sizes.  
  
 If the size of the entire paper is N×N (N = 2^K; 1 <= K <= 7; K = natural number), the cutting rules
@@ -73,8 +73,7 @@ Case #1
 9 7
  
 Case #2
-88 99
-Solution : 
+88 99*/
 #include <iostream>
 #include <cstdio>
 #include <cstring>
