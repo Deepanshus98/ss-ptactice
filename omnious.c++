@@ -6,7 +6,7 @@ int n;
 int solve(vector<int> arr, int start, int end, int times)
 {
     int count = 0;
-     for(int i = start; i < end; i ++ )
+     for(int i = start; i <= end; i ++ )
      {
          int temp = i;
          
@@ -23,7 +23,7 @@ int solve(vector<int> arr, int start, int end, int times)
          {
              curCount += digitCount[arr[i]];
          }
-         if( curCount >= times)
+         if( curCount < times)
             count++;
      }
      return count;
