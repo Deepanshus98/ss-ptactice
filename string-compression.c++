@@ -14,7 +14,7 @@ void mergeAplha(char *str){
     for(int i=0; i<lenString; i++){
         char letter = str[i];
         i++;
-        int temp = 0;
+        int temp = 1;
         while(i<lenString && str[i] >= '0' && str[i] <= '9'){
             temp = (temp * 10) + (str[i]-'0');
             i++;
