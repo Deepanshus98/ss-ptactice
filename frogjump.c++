@@ -19,13 +19,13 @@ bool isValid(int i, int j){
 }
 
 void calculateFrogJump(){
-    queue<Point> myq;
-    Point e;
+    	queue<Point> myq;
+    	Point e;
 	e.x = sX;
 	e.y = sY;
 	vis[sX][sY] = 1;
 	dis[sX][sY] = 0;
-    myq.push(e);
+	myq.push(e);
 	while(!myq.empty()){
 	    Point b;
 	    b=myq.front();
@@ -38,18 +38,18 @@ void calculateFrogJump(){
 
 			if(isValid(newX, newY) && mat[newX][newY] == 1 && vis[newX][newY] == 0){
 				/* Horizontal Cost */
-				
+
 				if(i == 0 || i == 2){
-					dis[newX][newY] = dis[p][q];
- 				}
+					dis[newX][newY] =1+ dis[p][q];
+				}
 				else if(i == 1 || i == 3){
-					dis[newX][newY] = 1 + dis[p][q];
+					dis[newX][newY] = dis[p][q];
 				}
 				Point e;
-            	e.x = newX;
-            	e.y = newY;
-            	vis[newX][newY] = 1;
-                myq.push(e);
+				e.x = newX;
+				e.y = newY;
+				vis[newX][newY] = 1;
+				myq.push(e);
 			}
 		}
 	}
@@ -70,4 +70,4 @@ int main(){
 
 	calculateFrogJump();
 	return 0;
-} 
+}
