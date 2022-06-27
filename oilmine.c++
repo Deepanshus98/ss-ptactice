@@ -1,3 +1,19 @@
+/*
+There is an island surrounded by oil mines. You will be given n companies and m oil mines having values.
+You have to distribute the mines to "n" companies in fair manner. Remember the companies can have oil 
+mines adjacent to each other and not in between of each others.After distributing them compute the 
+difference of oil mines from the company getting highest and company getting lowest. This number 
+should be minimum.(then only the distribution can be termed as fair).
+Input 
+2 
+2 4 
+6 13 10 2 
+2 4 
+6 10 13 2 
+output 
+5 
+1
+*/*/
 #include <bits/stdc++.h>
 using namespace std;
 
