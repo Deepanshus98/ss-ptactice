@@ -1,3 +1,29 @@
+
+/*
+There is one spaceship. X and Y co-odinate of source of spaceship and destination spaceship is given.
+There are N number of warmholes; each warmhole has 5 values. First 2 values are starting co-ordinate
+of warmhole and after that value no. 3 and 4 represents ending co-ordinate of warmhole and last 5th 
+value is represents cost to pass through this warmhole. Now these warmholes are bi-directional. Now 
+the to go from (x1,y1) to (x2,y2) is abs(x1-x2)+abs(y1-y2). The main problem here is to find minimum 
+distance to reach spaceship from source to destination co-ordinate using any number of warm-hole. 
+It is ok if you wont use any warmhole.
+30
+0
+20 20 100 100
+1
+20 20 100 100
+25 25 30 30 20
+1
+20 20 100 100
+25 25 30 30 5
+1
+20 20 100 100
+30 30 25 25 5
+2
+#1 : 160
+#2 : 160
+#3 : 155
+*/
 #include <iostream>
 #include <climits>
 #include<bits/stdc++.h>
