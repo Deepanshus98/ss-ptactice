@@ -2,98 +2,10 @@
 #define ac <bits/stdc++.h>
 #include ac
 using namespace std;
-int grid[15][15];
-int X[4]={1,-1,0,0};
+char grid[15][15];
+int X[4]={-1,1,0,0};
 int Y[4]={0,0,-1,1};
-struct Node{
-    int x;
-    int y;
-};
-Node bk;                
-Node aj;
-int x,y;
-Node grr,grx;
-int sol(int r, int c, int grid[][15])
-{ 
-    queue<Node> QG,QE;
-      
-    for(int i=0;i<r;i++)
-    {
-        for(int j=0;j<c;j++)
-        {
-            if(grid[i][j] == 3)
-            {
-                aj.x=i;
-                aj.y=j;
-                QE.push(aj);
-                if(i==0 || j==0 || (i==r-1) || j==c-1)
-                    return 1;
-            }
-            else if(grid[i][j] == 2)
-                bk.x=i;
-                bk.y=j;
-                QG.push(bk);
-          
-        }
-    }
-    if(QE.size() == 0)
-        return -1;
-    int ans = 1;
-    while(!QE.empty())
-    {
-        ans++;
-        int lG = QG.size(), lE = QE.size();
-        //GAS spread 
-        for(int i=0;i<lG;i++)
-        {
-            Node rty = QG.front();
-            x=rty.x;
-            y=rty.y;
-            QG.pop();
-              
-            for(int j=0;j<4;j++)
-            {
-                int xx = x+X[j], yy = y+Y[j];
-                if(xx<r && xx>=0 && yy>=0 && yy<c && (grid[xx][yy]==0 || grid[xx][yy]==3) )
-                {
-                    grid[xx][yy] = 2;
-                    grr.x=xx;
-                    grr.y=yy;
-                    QG.push(grr);
-                }
-            }
-        }
-        //ETHAN spread
-        for(int i=0;i<lE;i++)
-        {
-            Node rtx = QE.front();
-            x=rtx.x;
-            y=rtx.y;
-            QE.pop();
-              
-            for(int j=0;j<4;j++)
-            {
-                int xx = x+X[j], yy = y+Y[j];
-                if(xx<r && xx>=0 && yy>=0 && yy<c && (grid[xx][yy]==0) )
-                {
-                    grid[xx][yy] = 3;
-                    grx.x=xx;
-                    grx.y=yy;
-                    QE.push(grr);
-                    if(xx == 0 || xx == r-1 || yy == 0 || yy == c-1)
-                    {
-                        return ans;
-                    }
-                }
-                  
-            }
-        }
-    }
-      
-    return -1;
-      
-}
-  
+
 int main(int argc, char** argv)
 {
     int test_case;
@@ -107,11 +19,77 @@ int main(int argc, char** argv)
         for(int i=0;i<r;i++)
             for(int j=0;j<c;j++)
                 cin>>grid[i][j];
-         
+        queue<pair<int,int>> QG,QE;
+      
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                if(grid[i][j] == 'S')
+                {
+                
+                    QE.push({i,j});
+                }
+                else if(grid[i][j] == '*')
+                    QG.push({i,j});
+              
+            }
+        }
+        int ans = 0;
+        while(!QE.empty())
+        {
+            ans++;
+            int lG = QG.size(), lE = QE.size();
+            //GAS spread 
+            for(int i=0;i<lG;i++)
+            {
+                int b=QG.front().first;
+                int f=QG.front().second;
+                cout<<"gas1"<<b<<f<<endl;
+                QG.pop();
                   
-        int ans = sol(r,c,grid);
+                for(int j=0;j<4;j++)
+                {
+                    
+                    int kk = b+X[j], tt = f+Y[j];
+                    
+                    if(kk<r && kk>=0 && tt>=0 && tt<c && grid[kk][tt]!='d' && grid[kk][tt]!='X' && grid[kk][tt]!='E')
+                    {
+                        
+                        grid[kk][tt] = 'E';
+                        QG.push({kk,tt});
+                    }
+                }
+            }
+            //ETHAN spread
+            for(int i=0;i<lE;i++)
+            {
+                int e=QE.front().first;
+                int l=QE.front().second;
+                cout<<"ethan"<<e<<l<<endl;
+                QE.pop();
+                  
+                for(int j=0;j<4;j++)
+                {
+                    int ss = e+X[j], gg = l+Y[j];
+                    if(grid[ss][gg]=='d')
+                        {
+                             cout<<ans;
+                             return 0;;
+                        }
+                    
+                    if(ss<r && ss>=0 && gg>=0 && gg<c && grid[ss][gg]=='.' )
+                    {
+                        QE.push({ss,gg});
+                        
+                    }
+                      
+                }
+            }
+    }
          
-            cout<<ans<<endl;
+        cout<<-1<<endl;
     }
     return 0;
 }
+
