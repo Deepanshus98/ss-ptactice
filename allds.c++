@@ -35,36 +35,99 @@ int main() {
    return 0; 
 }
 //BST
-#include<stdio.h>
-#include<stdlib.h>
-struct node{
-   int key;
-   node *left, *right;
+
+// C++ program to demonstrate insertion
+// in a BST recursively.
+#include <iostream>
+using namespace std;
+ 
+class BST {
+    int data;
+    BST *left, *right;
+ 
+public:
+    // Default constructor.
+    BST();
+ 
+    // Parameterized constructor.
+    BST(int);
+ 
+    // Insert function.
+    BST* Insert(BST*, int);
+ 
+    // Inorder traversal.
+    void Inorder(BST*);
 };
-struct node *newNode(int item){
-   struct node *temp = new Node;
-   temp->key = item;
-   temp->left = temp->right = NULL;
-   return temp;
+ 
+// Default Constructor definition.
+BST ::BST()
+    : data(0)
+    , left(NULL)
+    , right(NULL)
+{
 }
-struct node* search(struct node* root, int key){
-   if (root == NULL || root->key == key)
-      return root;
-   if (root->key < key)
-      return search(root->right, key);
-   return search(root->left, key);
+ 
+// Parameterized Constructor definition.
+BST ::BST(int value)
+{
+    data = value;
+    left = right = NULL;
 }
-struct node* insert(struct node* node, int key){
-   if (node == NULL) return newNode(key);
-      if (key < node->key)
-         node->left = insert(node->left, key);
-      else if (key > node->key)
-         node->right = insert(node->right, key);
-   return node;
+ 
+// Insert function definition.
+BST* BST ::Insert(BST* root, int value)
+{
+    if (!root) {
+        // Insert the first node, if root is NULL.
+        return new BST(value);
+    }
+ 
+    // Insert data.
+    if (value > root->data) {
+        // Insert right node data, if the 'value'
+        // to be inserted is greater than 'root' node data.
+ 
+        // Process right nodes.
+        root->right = Insert(root->right, value);
+    }
+    else if (value < root->data){
+        // Insert left node data, if the 'value'
+        // to be inserted is smaller than 'root' node data.
+ 
+        // Process left nodes.
+        root->left = Insert(root->left, value);
+    }
+ 
+    // Return 'root' node, after insertion.
+    return root;
 }
-int main(){
-   struct node *root = NULL;
-   root = insert(root, 23);
+ 
+// Inorder traversal function.
+// This gives data in sorted order.
+void BST ::Inorder(BST* root)
+{
+    if (!root) {
+        return;
+    }
+    Inorder(root->left);
+    cout << root->data << endl;
+    Inorder(root->right);
+}
+ 
+// Driver code
+int main()
+{
+    BST b, *root = NULL;
+    root = b.Insert(root, 50);
+    b.Insert(root, 30);
+    b.Insert(root, 20);
+    b.Insert(root, 40);
+    b.Insert(root, 70);
+    b.Insert(root, 60);
+    b.Insert(root, 80);
+ 
+    b.Inorder(root);
+    return 0;
 }
 //Trie
 #include <bits/stdc++.h>
