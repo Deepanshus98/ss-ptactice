@@ -37,10 +37,10 @@
                 if(canBreakWall) {
                     grid[row][cols] = '$';
                     int temp = switch (i) {
-                        case 0 -> solve(grid, m, n, row, cols, target_x, target_y, false, moves + 1, visited, new Direction(false, false, true, false));
-                        case 1 -> solve(grid, m, n, row, cols, target_x, target_y, false, moves + 1, visited, new Direction(false, false, false, true));
-                        case 2 -> solve(grid, m, n, row, cols, target_x, target_y, false, moves + 1, visited, new Direction(true, false, false, false));
-                        default -> solve(grid, m, n, row, cols, target_x, target_y, false, moves + 1, visited, new Direction(false, true, false, false));
+                        case 0 -> solve(grid, m, n, row, cols, target_x, target_y, false, moves + 1, visited, new Direction(true, false, false, false));
+                        case 1 -> solve(grid, m, n, row, cols, target_x, target_y, false, moves + 1, visited, new Direction(false, true, false, false));
+                        case 2 -> solve(grid, m, n, row, cols, target_x, target_y, false, moves + 1, visited, new Direction(false, false, true, false));
+                        default -> solve(grid, m, n, row, cols, target_x, target_y, false, moves + 1, visited, new Direction(false, false, false, true));
                     };
                     if(temp != -1)
                         ans = Math.min(ans, temp);
